@@ -4,9 +4,18 @@
 $Script:Notes = @()
 
 # Function to add a note to the $Notes array
+# Note to be added as parameter $Note, of type String
 Function Add-Note {
     param (
-        [String]$Note  # Note to be added, parameter $Note of type String
+        [String]$Note  
     )
-    $Script:Notes += $Note   # Append Note to $Notes array
+    $Script:Notes += $Note
+}
+
+# Function to display all notes in the $Notes array
+Function Show-Notes {
+    Write-Host "Notes:"
+    ForEach ($note in $Script:Notes) {
+        Write-Host "- $Note"
+    }
 }
