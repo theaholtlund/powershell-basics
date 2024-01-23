@@ -19,3 +19,10 @@ Function Show-Notes {
         Write-Host "- $Note"
     }
 }
+
+# Adding example notes to the array
+Add-Note "This is the first note"
+Add-Note "Learning PowerShell basics"
+
+# Displaying all notes in the array
+Show-Notes
