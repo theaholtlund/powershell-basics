@@ -18,3 +18,15 @@ if ($Age -lt 18) {
 } else {
     Write-Host "You are a senior citizen."
 }
+
+# Concatenate strings in PowerShell
+$Greeting = "Nice to meet you, $Name! You are $Age years old."
+
+# Print the concatenated string
+Write-Host $Greeting
+
+# Get the current date and time
+$CurrentDateTime = Get-Date
+
+# Print the current date and time
+Write-Host "The current date and time is: $CurrentDateTime"
