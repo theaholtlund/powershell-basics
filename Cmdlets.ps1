@@ -1,6 +1,6 @@
 # Introduction to cmdlets in PowerShell, file is just for testing and learning
 
-# Ask the user for their name
+# Write out to the shell, ask the user for their name
 $Name = Read-Host "What is your name?"
 
 # Print simple greeting to the console
@@ -9,7 +9,7 @@ Write-Host "Hello, $Name! Welcome to the PowerShell world." -ForegroundColor Dar
 # Ask the user for their age
 $Age = Read-Host "How old are you?"
 
-# Print message based on age of the user, using comparison operators
+# Print message based on age of user, using comparison operators
 # Operator -le stands for "less than", and -ge stands for "greater than or equal to"
 if ($Age -lt 18) {
     Write-Host "You are a minor."
@@ -25,7 +25,7 @@ $Greeting = "Nice to meet you, $Name! You are $Age years old."
 # Print the concatenated string
 Write-Host $Greeting -ForegroundColor DarkYellow
 
-# Get the current date and time
+# Get the current date and time in PowerShell
 $CurrentDateTime = Get-Date
 
 # Print the current date and time
@@ -50,15 +50,13 @@ if (Test-Path $FilePath) {
     Write-Host "The file $FilePath does not exist."
 }
 
-
 # Write text to a file
 $TextToWrite = "This is some text that will be written to the file."
 $TextToWrite | Out-File -FilePath $FilePath
 
 # Read text from a file
 $FileContent = Get-Content -Path $FilePath
-Write-Host "Content of the file:"
-Write-Host $FileContent
+Write-Host "Content of the file: $FileContent"
 
 # Clean up testing by deleting the directory and its contents
 Remove-Item -Path ".\NewDirectory" -Recurse -Force
