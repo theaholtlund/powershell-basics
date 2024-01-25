@@ -49,3 +49,17 @@ if (Test-Path $FilePath) {
 } else {
     Write-Host "The file $FilePath does not exist."
 }
+
+
+# Write text to a file
+$TextToWrite = "This is some text that will be written to the file."
+$TextToWrite | Out-File -FilePath $FilePath
+
+# Read text from a file
+$FileContent = Get-Content -Path $FilePath
+Write-Host "Content of the file:"
+Write-Host $FileContent
+
+# Clean up testing by deleting the directory and its contents
+Remove-Item -Path ".\NewDirectory" -Recurse -Force
+Write-Host "Directory and its contents deleted."
