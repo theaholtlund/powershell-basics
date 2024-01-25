@@ -4,7 +4,7 @@
 $Name = Read-Host "What is your name?"
 
 # Print simple greeting to the console
-Write-Host "Hello, $Name! Welcome to the PowerShell world."
+Write-Host "Hello, $Name! Welcome to the PowerShell world." -ForegroundColor DarkRed
 
 # Ask the user for their age
 $Age = Read-Host "How old are you?"
@@ -23,7 +23,7 @@ if ($Age -lt 18) {
 $Greeting = "Nice to meet you, $Name! You are $Age years old."
 
 # Print the concatenated string
-Write-Host $Greeting
+Write-Host $Greeting -ForegroundColor DarkYellow
 
 # Get the current date and time
 $CurrentDateTime = Get-Date
