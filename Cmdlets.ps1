@@ -3,13 +3,13 @@
 # Ask the user for their name
 $Name = Read-Host "What is your name?"
 
-# Print a simple greeting to the console
+# Print simple greeting to the console
 Write-Host "Hello, $Name! Welcome to the PowerShell world."
 
 # Ask the user for their age
 $Age = Read-Host "How old are you?"
 
-# Print a message based on age of the user, using comparison operators
+# Print message based on age of the user, using comparison operators
 # Operator -le stands for "less than", and -ge stands for "greater than or equal to"
 if ($Age -lt 18) {
     Write-Host "You are a minor."
@@ -30,3 +30,22 @@ $CurrentDateTime = Get-Date
 
 # Print the current date and time
 Write-Host "The current date and time is: $CurrentDateTime"
+
+# Create new directory, but only if one does not already exist
+# -PathType Container specifies that the code is checking for a directory
+$DirectoryPath = ".\NewDirectory"
+
+if (-not (Test-Path -Path $DirectoryPath -PathType Container)) {
+    New-Item -ItemType Directory -Path $DirectoryPath
+    Write-Host "Directory '$DirectoryPath' created."
+} else {
+    Write-Host "Directory '$DirectoryPath' already exists."
+}
+
+# Check if a file exists in the newly created directory
+$FilePath = ".\NewDirectory\test.txt"
+if (Test-Path $FilePath) {
+    Write-Host "The file $FilePath exists."
+} else {
+    Write-Host "The file $FilePath does not exist."
+}
