@@ -27,11 +27,12 @@ while ($true) {
     Clear-Notes
     Show-Notes
 
-    # Searching notes for the "PowerShell" keyword
-    Search-Notes "PowerShell"
-
-    $UserInput = Read-Host "Do you want to continue? Type 'exit' to quit."
-    if ($UserInput -eq "exit") {
+    # Asking the user for the keyword to search
+    $Keyword = Read-Host "Enter the keyword to search for. Type 'exit' to quit."
+    if ($Keyword -eq "exit") {
         break
     }
+
+    # Searching notes for the provided keyword
+    Search-Notes $Keyword
 }

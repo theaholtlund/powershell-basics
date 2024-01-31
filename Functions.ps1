@@ -21,7 +21,7 @@ Function Show-Notes {
 # Function to remove a note from the $Notes array based on its index
 # Index of the note to be removed as parameter $Index, of type Int
 Function Remove-Note {
-    $IndexToRemove = Read-Host "Enter the index of the note you want to remove. Type 'exit' to quit."
+    $IndexToRemove = Read-Host "Enter the index of the note you want to remove. Type 'exit' to quit"
     if ($IndexToRemove -eq "exit") {
         return
     }
