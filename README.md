@@ -4,6 +4,14 @@
 
 This is a simple PowerShell application to add, remove and display notes added by a user. It was created to cover basic functionality, and developed as a step in learning introductory PowerShell. There is also a directory called `CmdletPractice`, which only contains simple notes and basic syntax, created for referance and not for functionality.
 
+## Main Features
+
+- **Add Notes**: Easily add new notes to your collection.
+- **Display Notes**: View all your notes in one place.
+- **Remove Notes**: Remove specific notes by index.
+- **Clear Notes**: Clear all notes from the collection at once.
+- **Search Notes**: Search for specific keywords within your notes.
+
 ## Getting Started
 
 ### Prerequisites
