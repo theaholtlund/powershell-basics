@@ -6,17 +6,17 @@ This is a simple PowerShell application to add, remove and display notes added b
 
 ## Main Features
 
-- **Add Notes**: Easily add new notes to your collection.
-- **Display Notes**: View all your notes in one place.
+- **Add Notes**: Easily add new notes to the collection.
+- **Display Notes**: View all notes in one place.
 - **Remove Notes**: Remove specific notes by index.
 - **Clear Notes**: Clear all notes from the collection at once.
-- **Search Notes**: Search for specific keywords within your notes.
+- **Search Notes**: Search for specific keywords within all the notes.
 
 ## Getting Started
 
 ### Prerequisites
 
-- PowerShell installed on your system.
+- PowerShell installed on the system.
 
 ### Executing program
 
@@ -32,4 +32,4 @@ This is a simple PowerShell application to add, remove and display notes added b
 
 4. Follow the on-screen prompts to interact with the notes application.
 
-5. Type `exit` when you are done to quit the program.
+5. Type `exit` in order to quit the program.
