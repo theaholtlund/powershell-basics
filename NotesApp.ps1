@@ -7,23 +7,31 @@
 # Creating a new instance of ArrayList, allowing users to add and remove elements dynamically
 $Script:Notes = New-Object System.Collections.ArrayList
 
-# Adding example notes to the array
-Add-Note "This is the first note."
-Add-Note "Learning PowerShell basics."
-Add-Note "This is a cool and important note."
+# Main loop to keep the program running until the user decides to exit
+while ($true) {
+    # Adding example notes to the array
+    Add-Note "This is the first note."
+    Add-Note "Learning PowerShell basics."
+    Add-Note "This is a cool and important note."
 
-# Displaying all notes in the array
-Show-Notes
+    # Displaying all notes in the array
+    Show-Notes
 
-# Removing a note from the array based on user input
-Remove-Note
+    # Removing a note from the array based on user input
+    Remove-Note
 
-# Displaying notes after removing one
-Show-Notes
+    # Displaying notes after removing one
+    Show-Notes
 
-# Clearing all notes
-Clear-Notes
-Show-Notes
+    # Clearing all notes
+    Clear-Notes
+    Show-Notes
 
-# Searching notes
-Search-Notes "PowerShell"
+    # Searching notes for the "PowerShell" keyword
+    Search-Notes "PowerShell"
+
+    $UserInput = Read-Host "Do you want to continue? Type 'exit' to quit."
+    if ($UserInput -eq "exit") {
+        break
+    }
+}

@@ -31,3 +31,5 @@ This is a simple PowerShell application to add, remove and display notes added b
    ```
 
 4. Follow the on-screen prompts to interact with the notes application.
+
+5. Type `exit` when you are done to quit the program.
