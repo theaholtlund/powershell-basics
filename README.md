@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple PowerShell application to add, remove and display notes added by a user. It was created to cover basic functionality, and developed as a step in learning introductory PowerShell.
+This is a simple PowerShell application to add, remove and display notes added by a user. It was created to cover basic functionality, and developed as a step in learning introductory PowerShell. There is also a directory called `CmdletPractice`, which only contains simple notes and basic syntax, created for referance and not for functionality.
 
 ## Getting Started
 
