@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple PowerShell application to add, remove and display notes added by a user. It was created to cover basic functionality, and developed as a step in learning introductory PowerShell. There is also a directory called `CmdletPractice`, which only contains simple notes and basic syntax, created for referance and not for functionality.
+This is a simple PowerShell application to add, remove, display, search, and export notes added by a user. It was created to cover basic functionality and developed as a step in learning introductory PowerShell. There is also a directory called `CmdletPractice`, which only contains simple notes and basic syntax, created for reference and not for functionality.
 
 ## Main Features
 
@@ -11,6 +11,7 @@ This is a simple PowerShell application to add, remove and display notes added b
 - **Remove Notes**: Remove specific notes by index.
 - **Clear Notes**: Clear all notes from the collection at once.
 - **Search Notes**: Search for specific keywords within all the notes.
+- **Export Notes**: Export notes to a text file.
 
 ## Getting Started
 
@@ -29,7 +30,3 @@ This is a simple PowerShell application to add, remove and display notes added b
    ```sh
    .\NotesApp.ps1
    ```
-
-4. Follow the on-screen prompts to interact with the notes application.
-
-5. Type `exit` in order to quit the program.
