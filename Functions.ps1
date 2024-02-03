@@ -21,7 +21,7 @@ Function Show-Notes {
 # Function to remove a note from the $Notes array based on its index
 # Index of the note to be removed as parameter $Index, of type Int
 Function Remove-Note {
-    $IndexToRemove = Read-Host "Enter the index of the note you want to remove. Type 'exit' to quit"
+    $IndexToRemove = Read-Host "Enter the index of the note you want to remove"
     if ($IndexToRemove -eq "exit") {
         return
     }
@@ -58,6 +58,7 @@ Function Export-Notes {
     param (
         [String]$Path
     )
-    $Script:Notes | Out-String | Set-Content -Path $Path
+    $NotesString = $Script:Notes -join "`r`n"
+    $NotesString | Out-File -FilePath $Path -Encoding utf8
     Write-Host "Notes exported successfully to $Path."
 }
