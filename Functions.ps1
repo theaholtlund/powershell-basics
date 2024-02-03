@@ -52,3 +52,12 @@ Function Search-Notes {
         Write-Host "No notes containing '$Keyword' found."
     }
 }
+
+# Function to export notes to a text file
+Function Export-Notes {
+    param (
+        [String]$Path
+    )
+    $Script:Notes | Out-String | Set-Content -Path $Path
+    Write-Host "Notes exported successfully to $Path."
+}
