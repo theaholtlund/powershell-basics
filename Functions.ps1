@@ -59,6 +59,7 @@ Function Export-Notes {
         [String]$Path
     )
     $NotesString = $Script:Notes -join "`r`n"
-    $NotesString | Out-File -FilePath $Path -Encoding utf8
-    Write-Host "Notes exported successfully to $Path."
+    $ExportFilePath = Join-Path -Path $Path -ChildPath "notes.txt"
+    $NotesString | Out-File -FilePath $ExportFilePath -Encoding utf8
+    Write-Host "Notes exported successfully to $ExportFilePath."
 }
