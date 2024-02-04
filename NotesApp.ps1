@@ -39,7 +39,11 @@ while ($true) {
     # Give users the possibility to export notes
     $ExportChoice = Read-Host "Do you want to export the notes? (Y/N)"
     if ($ExportChoice -eq "Y") {
-        $ExportPath = Read-Host "Enter the path for the exported file, such as C:\Notes\exported_notes.txt)"
+        $ExportPath = Read-Host "Enter the path for the exported file:"
         Export-Notes -Path $ExportPath
+    } elseif ($ExportChoice -eq "N") {
+        Write-Host "No export of notes at this time."
+    } else {
+        Write-Host "Invalid option. Please choose either 'Y' or 'N'."
     }
 }
