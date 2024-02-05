@@ -23,10 +23,6 @@ while ($true) {
     # Displaying notes after removing one
     Show-Notes
 
-    # Clearing all notes
-    Clear-Notes
-    Show-Notes
-
     # Asking the user for the keyword to search
     $Keyword = Read-Host "Enter the keyword to search for. Type 'exit' to quit."
     if ($Keyword -eq "exit") {
