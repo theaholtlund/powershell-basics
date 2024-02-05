@@ -44,14 +44,21 @@ Function Search-Notes {
     param (
         [String]$Keyword
     )
+
+    # Check if the keyword exists in any notes
     $foundNotes = $Script:Notes | Where-Object { $_ -match $Keyword }
+
+    # If any notes are found, display them
     if ($foundNotes) {
         Write-Host "Notes containing '$Keyword':"
         $foundNotes
-    } else {
-        Write-Host "No notes containing '$Keyword' found."
+    } 
+    else {
+        # If no notes are found, notify the user
+        Write-Host "No notes containing the keyword '$Keyword' found."
     }
-}
+} 
+
 
 # Function to export notes to a text file
 Function Export-Notes {
@@ -59,7 +66,7 @@ Function Export-Notes {
         [String]$Path
     )
     $NotesString = $Script:Notes -join "`r`n"
-    $ExportFilePath = Join-Path -Path $Path -ChildPath "notes.txt"
+    $ExportFilePath = Join-Path -Path $Path -ChildPath "Notes.txt"
     $NotesString | Out-File -FilePath $ExportFilePath -Encoding utf8
-    Write-Host "Notes exported successfully to $ExportFilePath."
+    Write-Host "Notes were successfully exported to $ExportFilePath."
 }
