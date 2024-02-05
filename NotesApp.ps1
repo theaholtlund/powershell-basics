@@ -22,7 +22,11 @@ Remove-Note
 Show-Notes
 
 # Asking the user for the keyword to search
-$Keyword = Read-Host "Enter the keyword to search for. Type 'exit' to quit."
+$Keyword = Read-Host @"
+Enter keyword to search for.
+Please note that the search is case-sensitive and requires exact match.
+Type 'exit' to quit.
+"@
 if ($Keyword -eq "exit") {
     exit
 }
@@ -41,5 +45,5 @@ if ($ExportChoice -eq "Y") {
     Write-Host "Invalid option. Please choose either 'Y' or 'N'."
 }
 
-# Clear after export
+# Clear notes, though not strictly needed when app does not loop
 Clear-Notes 
