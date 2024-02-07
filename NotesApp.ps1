@@ -13,6 +13,7 @@ Add-Note "Learning PowerShell basics."
 Add-Note "This is a cool and important note."
 
 # Displaying all notes in the array
+Write-Host "`nWelcome to PowerShell Notes Application!" -ForegroundColor Yellow
 Show-Notes
 
 # Removing a note from the array based on user input
@@ -24,6 +25,7 @@ Show-Notes
 # Asking the user for the index of the note to edit
 $IndexToEdit = Read-Host "Enter the index of the note you want to edit"
 if ($IndexToEdit -eq "exit") {
+    Write-Host "Bye for now, see you again later!" -ForegroundColor Yellow
     exit
 }
 Edit-Note $IndexToEdit
@@ -38,6 +40,7 @@ Please note that the search is case-sensitive and requires exact match.
 Type 'exit' to quit.
 "@
 if ($Keyword -eq "exit") {
+    Write-Host "Bye for now, see you again later!" -ForegroundColor Yellow
     exit
 }
 
