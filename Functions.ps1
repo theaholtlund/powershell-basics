@@ -88,3 +88,14 @@ Function Export-Notes {
     $NotesString | Out-File -FilePath $ExportFilePath -Encoding utf8
     Write-Host "Notes were successfully exported to $ExportFilePath."
 }
+
+# Function to handle exit based on user input
+Function Exit {
+    param (
+        [String]$UserInput
+    )
+    if ($Input -eq "exit") {
+        Write-Host "Bye for now, see you again later!" -ForegroundColor Yellow
+        exit
+    }
+}
