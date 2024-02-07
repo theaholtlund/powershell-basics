@@ -33,6 +33,24 @@ Function Remove-Note {
     }
 }
 
+# Function to edit a note in the $Notes ArrayList based on its index
+# Index of the note to be edited as parameter $Index, of type Int
+Function Edit-Note {
+    param (
+        [int]$Index
+    )
+    $NewNote = Read-Host "Enter the new content for the note at index $Index"
+    if ($NewNote -eq "exit") {
+        return
+    }
+    if ($Index -ge 0 -and $Index -lt $Script:Notes.Count) {
+        $Script:Notes[$Index] = $NewNote
+        Write-Host "Note at index $Index edited."
+    } else {
+        Write-Host "Invalid index, note was not edited."
+    }
+}
+
 # Function to clear all notes from the $Notes ArrayList
 Function Clear-Notes {
     $Script:Notes.Clear()
