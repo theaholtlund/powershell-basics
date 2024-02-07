@@ -21,6 +21,16 @@ Remove-Note
 # Displaying notes after removing one
 Show-Notes
 
+# Asking the user for the index of the note to edit
+$IndexToEdit = Read-Host "Enter the index of the note you want to edit"
+if ($IndexToEdit -eq "exit") {
+    exit
+}
+Edit-Note $IndexToEdit
+
+# Displaying notes after editing
+Show-Notes
+
 # Asking the user for the keyword to search
 $Keyword = Read-Host @"
 Enter keyword to search for.
@@ -46,4 +56,4 @@ if ($ExportChoice -eq "Y") {
 }
 
 # Clear notes, though not strictly needed when app does not loop
-Clear-Notes 
+Clear-Notes
