@@ -1,7 +1,7 @@
 # This file only contains functions, later to be imported into other scripts for use
 # Provides modularity and organization, enhancing readability and promoting separation of concerns
 
-# Function to add a note to the $Notes ArrayList
+# Function to add note to the $Notes ArrayList
 # Note to be added as parameter $Note, of type String, with Out-Null suppressing the output
 Function Add-Note {
     param (
@@ -19,7 +19,7 @@ Function Show-Notes {
     }
 }
 
-# Function to remove a note from the $Notes array based on its index
+# Function to remove note from the $Notes array based on index
 # Index of the note to be removed as parameter $Index, of type Int
 Function Remove-Note {
     $IndexToRemove = Read-Host "Enter the index of the note you want to remove"
@@ -34,7 +34,7 @@ Function Remove-Note {
     }
 }
 
-# Function to edit a note in the $Notes ArrayList based on its index
+# Function to edit note in the $Notes ArrayList based on index
 # Index of the note to be edited as parameter $Index, of type Int
 Function Edit-Note {
     param (
@@ -80,7 +80,6 @@ Function Search-Notes {
         Write-Output "No notes containing the keyword '$Keyword' found."
     }
 } 
-
 
 # Function to export notes to a text file
 # Test-Path to first check if all path elements exist, then if path syntax is correct

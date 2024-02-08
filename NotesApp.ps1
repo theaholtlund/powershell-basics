@@ -13,7 +13,7 @@ Add-Note "Learning PowerShell basics."
 Add-Note "This is a cool and important note."
 
 # Displaying all notes in the array
-Write-Host "`nWelcome to PowerShell Notes Application!" -ForegroundColor Yellow
+Write-Output "`nWelcome to PowerShell Notes Application!" -ForegroundColor Yellow
 Show-Notes
 
 # Removing a note from the array based on user input
@@ -43,9 +43,9 @@ if ($ExportChoice -eq "Y") {
     $ExportPath = Read-Host "Enter the path for the exported file:"
     Export-Notes -Path $ExportPath
 } elseif ($ExportChoice -eq "N") {
-    Write-Host "No export of notes at this time."
+    Write-Output "No export of notes at this time."
 } else {
-    Write-Host "Invalid option. Please choose either 'Y' or 'N'."
+    Write-Output "Invalid option. Please choose either 'Y' or 'N'."
 }
 
 # Clear notes, though not strictly needed when app does not loop
