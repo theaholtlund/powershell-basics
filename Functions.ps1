@@ -1,5 +1,5 @@
 # This file only contains functions, later to be imported into other scripts for use
-# Provides modularity and organisation, enhancing readability and promoting separation of concerns
+# Provides modularity and organization, enhancing readability and promoting separation of concerns
 
 # Function to add a note to the $Notes ArrayList
 # Note to be added as parameter $Note, of type String, with Out-Null suppressing the output
@@ -22,9 +22,8 @@ Function Show-Notes {
 # Index of the note to be removed as parameter $Index, of type Int
 Function Remove-Note {
     $IndexToRemove = Read-Host "Enter the index of the note you want to remove"
-    Handle-Exit $IndexToRemove
     if ($IndexToRemove -eq "exit") {
-        exit
+        Exit-Script
     }
     if ($IndexToRemove -ge 0 -and $IndexToRemove -lt $Script:Notes.Count) {
         $Script:Notes.RemoveAt($IndexToRemove)
@@ -41,9 +40,8 @@ Function Edit-Note {
         [int]$Index
     )
     $NewNote = Read-Host "Enter the new content for the note at index $Index"
-    Handle-Exit $NewNote
     if ($NewNote -eq "exit") {
-        exit
+        Exit-Script
     }
     if ($Index -ge 0 -and $Index -lt $Script:Notes.Count) {
         $Script:Notes[$Index] = $NewNote
@@ -91,13 +89,8 @@ Function Export-Notes {
     Write-Host "Notes were successfully exported to $ExportFilePath."
 }
 
-# Function to handle exit based on user input
-Function Exit {
-    param (
-        [String]$UserInput
-    )
-    if ($Input -eq "exit") {
-        Write-Host "Bye for now, see you again later!" -ForegroundColor Yellow
-        exit
-    }
+# Function to handle script exit based on user input
+Function Exit-Script {
+    Write-Host "Bye for now, see you again later!" -ForegroundColor Yellow
+    exit
 }
