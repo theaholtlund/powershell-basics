@@ -1,8 +1,9 @@
 # This file is the main entry point for the PowerShell Notes Application
 # Responsible for handling user interactions and integrating imported functions
 
-# Importing all functions from Functions.ps1
+# Importing functions and tests from other project scripts
 . ".\Functions.ps1"
+. ".\Testing.ps1"
 
 # Creating a new instance of ArrayList, allowing users to add and remove elements dynamically
 $Script:Notes = New-Object System.Collections.ArrayList
@@ -13,7 +14,7 @@ Add-Note "Learning PowerShell basics."
 Add-Note "This is a cool and important note."
 
 # Displaying all notes in the array
-Write-Output "`nWelcome to PowerShell Notes Application!" -ForegroundColor Yellow
+Write-Host "`nWelcome to PowerShell Notes Application!" -ForegroundColor Yellow
 Show-Notes
 
 # Removing a note from the array based on user input
