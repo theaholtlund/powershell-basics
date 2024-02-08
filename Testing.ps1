@@ -6,49 +6,35 @@
 
 # Describe block for testing Add-Note function
 Describe "Add-Note Function Tests" {
-    Context "Adding a note" {
-        It "Should add a note to the notes array" {
+    # Context for testing Add-Note function with programmatically added note
+    Context "Adding a note programmatically" {
+        It "Should pass when a non-empty note is added programmatically" {
             # Arrange
-            $expectedNote = "Test Note"
+            $ExpectedNote = "Test Note"  # Provide a mocked input for the note
 
             # Act
-            Add-Note -Note $expectedNote
+            Add-Note -Note $ExpectedNote
 
             # Assert
-            $addedNote = $Script:Notes[-1]
-            $addedNote | Should -Be $expectedNote
+            $AddedNote = $Script:Notes[-1]  # Get the last added note
+            $AddedNote | Should -Be $ExpectedNote
         }
     }
 
-    Context "Adding a Note without specifying Note parameter" {
-        It "Should throw an error" {
-            # Arrange & Act & Assert
-            { Add-Note } | Should -Throw
+    # Context for testing Add-Note function with user input
+    Context "Adding a note with user input" {
+        It "Should pass when a non-empty note is added via user input" {
+            # Arrange
+            $mockedInput = "Test Note"  # Provide a mocked input for the note
+
+            # Act
+            # Mock the Read-Host call to simulate user input
+            Mock Read-Host { $mockedInput } -Verifiable
+            Add-Note  # Call Add-Note function, which will prompt the user for input
+
+            # Assert
+            $AddedNote = $Script:Notes[-1]  # Get the last added note
+            $AddedNote | Should -Be $mockedInput
         }
     }
-}
-
-# Describe block for testing Remove-Note function
-Describe "Remove-Note Function Tests" {
-    # Add test cases for Remove-Note function
-}
-
-# Describe block for testing Edit-Note function
-Describe "Edit-Note Function Tests" {
-    # Add test cases for Edit-Note function
-}
-
-# Describe block for testing Clear-Notes function
-Describe "Clear-Notes Function Tests" {
-    # Add test cases for Clear-Notes function
-}
-
-# Describe block for testing Search-Notes function
-Describe "Search-Notes Function Tests" {
-    # Add test cases for Search-Notes function
-}
-
-# Describe block for testing Export-Notes function
-Describe "Export-Notes Function Tests" {
-    # Add test cases for Export-Notes function
 }
