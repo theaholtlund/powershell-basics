@@ -88,7 +88,11 @@ Function Export-Notes {
         [Parameter(Mandatory = $true)]
         [String]$Path
     )
-    
+    if (-not (Test-Path -Path $Path -IsValid)) {
+        Write-Host "Invalid path, please provide a valid file path." -ForegroundColor Red
+        return
+    }
+
     $NotesString = $Script:Notes -join "`r`n"
     $ExportFilePath = Join-Path -Path $Path -ChildPath "Notes.txt"
     $NotesString | Out-File -FilePath $ExportFilePath -Encoding utf8
