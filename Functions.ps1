@@ -89,7 +89,7 @@ Function Export-Notes {
         [String]$Path
     )
     if (-not (Test-Path -Path $Path -IsValid)) {
-        Write-Output "Invalid path, please provide a valid file path." -ForegroundColor Red
+        Write-Host "Invalid path, please provide a valid file path." -ForegroundColor Red
         return
     }
 
@@ -101,6 +101,6 @@ Function Export-Notes {
 
 # Function to handle script exit based on user input
 Function Exit-Script {
-    Write-Output "Bye for now, see you again later!" -ForegroundColor Yellow
+    Write-Host "Bye for now, see you again later!" -ForegroundColor Yellow
     exit
 }
