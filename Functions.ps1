@@ -13,9 +13,9 @@ Function Add-Note {
 
 # Function to display all notes in the $Notes ArrayList
 Function Show-Notes {
-    Write-Host "Notes:"
+    Write-Output "Notes:"
     For ($i = 0; $i -lt $Script:Notes.Count; $i++) {
-        Write-Host "$i - $($Script:Notes[$i])"
+        Write-Output "$i - $($Script:Notes[$i])"
     }
 }
 
@@ -28,9 +28,9 @@ Function Remove-Note {
     }
     if ($IndexToRemove -ge 0 -and $IndexToRemove -lt $Script:Notes.Count) {
         $Script:Notes.RemoveAt($IndexToRemove)
-        Write-Host "Note at index $IndexToRemove removed."
+        Write-Output "Note at index $IndexToRemove removed."
     } else {
-        Write-Host "Invalid index, note was not removed."
+        Write-Output "Invalid index, note was not removed."
     }
 }
 
@@ -48,16 +48,16 @@ Function Edit-Note {
             Exit-Script
         }
         $Script:Notes[$Index] = $NewNote
-        Write-Host "Note at index $Index edited."
+        Write-Output "Note at index $Index edited."
     } else {
-        Write-Host "Invalid index, note was not edited."
+        Write-Output "Invalid index, note was not edited."
     }
 }
 
 # Function to clear all notes from the $Notes ArrayList
 Function Clear-Notes {
     $Script:Notes.Clear()
-    Write-Host "All notes cleared."
+    Write-Output "All notes cleared."
 }
 
 # Function to search notes for a specific keyword
@@ -83,24 +83,25 @@ Function Search-Notes {
 
 
 # Function to export notes to a text file
+# Test-Path to first check if all path elements exist, then if path syntax is correct
 Function Export-Notes {
     param (
         [Parameter(Mandatory = $true)]
         [String]$Path
     )
     if (-not (Test-Path -Path $Path -IsValid)) {
-        Write-Host "Invalid path, please provide a valid file path." -ForegroundColor Red
+        Write-Output "Invalid path, please provide a valid file path." -ForegroundColor Red
         return
     }
 
     $NotesString = $Script:Notes -join "`r`n"
     $ExportFilePath = Join-Path -Path $Path -ChildPath "Notes.txt"
     $NotesString | Out-File -FilePath $ExportFilePath -Encoding utf8
-    Write-Host "Notes were successfully exported to $ExportFilePath."
+    Write-Output "Notes were successfully exported to $ExportFilePath."
 }
 
 # Function to handle script exit based on user input
 Function Exit-Script {
-    Write-Host "Bye for now, see you again later!" -ForegroundColor Yellow
+    Write-Output "Bye for now, see you again later!" -ForegroundColor Yellow
     exit
 }
