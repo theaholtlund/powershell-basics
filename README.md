@@ -18,6 +18,7 @@ This is a simple PowerShell application to add, remove, display, search, and exp
 ### Prerequisites
 
 - PowerShell installed on the system.
+- Pester module installed for testing.
 
 ### Executing program
 
@@ -25,7 +26,13 @@ This is a simple PowerShell application to add, remove, display, search, and exp
 
 2. Change into the project directory.
 
-3. Run the script using PowerShell:
+3. Import the Pester module using PowerShell:
+
+   ```sh
+   Import-Module -Name Pester
+   ```
+
+4. Run the script using PowerShell:
 
    ```sh
    .\NotesApp.ps1
