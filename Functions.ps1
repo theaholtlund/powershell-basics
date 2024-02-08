@@ -5,6 +5,7 @@
 # Note to be added as parameter $Note, of type String, with Out-Null suppressing the output
 Function Add-Note {
     param (
+        [Parameter(Mandatory = $true)]
         [String]$Note  
     )
     $Script:Notes.Add($Note) | Out-Null
@@ -37,13 +38,15 @@ Function Remove-Note {
 # Index of the note to be edited as parameter $Index, of type Int
 Function Edit-Note {
     param (
+        [Parameter(Mandatory = $true)]
         [int]$Index
     )
-    $NewNote = Read-Host "Enter the new content for the note at index $Index"
-    if ($NewNote -eq "exit") {
-        Exit-Script
-    }
+
     if ($Index -ge 0 -and $Index -lt $Script:Notes.Count) {
+        $NewNote = Read-Host "Enter the new content for the note at index $Index"
+        if ($NewNote -eq "exit") {
+            Exit-Script
+        }
         $Script:Notes[$Index] = $NewNote
         Write-Host "Note at index $Index edited."
     } else {
@@ -60,6 +63,7 @@ Function Clear-Notes {
 # Function to search notes for a specific keyword
 Function Search-Notes {
     param (
+        [Parameter(Mandatory = $true)]
         [String]$Keyword
     )
 
@@ -68,12 +72,12 @@ Function Search-Notes {
 
     # If any notes are found, display them
     if ($foundNotes) {
-        Write-Host "Notes containing '$Keyword':"
+        Write-Output "Notes containing '$Keyword':"
         $foundNotes
     } 
     else {
         # If no notes are found, notify the user
-        Write-Host "No notes containing the keyword '$Keyword' found."
+        Write-Output "No notes containing the keyword '$Keyword' found."
     }
 } 
 
@@ -81,8 +85,10 @@ Function Search-Notes {
 # Function to export notes to a text file
 Function Export-Notes {
     param (
+        [Parameter(Mandatory = $true)]
         [String]$Path
     )
+    
     $NotesString = $Script:Notes -join "`r`n"
     $ExportFilePath = Join-Path -Path $Path -ChildPath "Notes.txt"
     $NotesString | Out-File -FilePath $ExportFilePath -Encoding utf8
