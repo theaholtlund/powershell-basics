@@ -1,8 +1,7 @@
-# This file only contains functions, later to be imported into other scripts for use
-# Provides modularity and organization, enhancing readability and promoting separation of concerns
+# This file contains functions for the PowerShell Notes Application
+# These functions handle note management and interaction with the user
 
-# Function to add note to the $Notes ArrayList
-# Note to be added as parameter $Note, of type String, with Out-Null suppressing the output
+# Function to add a note to the $Notes ArrayList
 Function Add-Note {
     param (
         [Parameter(Mandatory = $true)]
@@ -19,8 +18,7 @@ Function Show-Notes {
     }
 }
 
-# Function to remove note from the $Notes array based on index
-# Index of the note to be removed as parameter $Index, of type Int
+# Function to remove a note from the $Notes array based on index
 Function Remove-Note {
     $IndexToRemove = Read-Host "Enter the index of the note you want to remove"
     if ($IndexToRemove -eq "exit") {
@@ -34,8 +32,7 @@ Function Remove-Note {
     }
 }
 
-# Function to edit note in the $Notes ArrayList based on index
-# Index of the note to be edited as parameter $Index, of type Int
+# Function to edit a note in the $Notes ArrayList based on index
 Function Edit-Note {
     param (
         [Parameter(Mandatory = $true)]
@@ -67,16 +64,16 @@ Function Search-Notes {
         [String]$Keyword
     )
 
-    # Check if the keyword exists in any notes
+# Check if the keyword exists in any notes
     $foundNotes = $Script:Notes | Where-Object { $_ -match $Keyword }
 
-    # If any notes are found, display them
+# If any notes are found, display them
     if ($foundNotes) {
         Write-Output "Notes containing '$Keyword':"
         $foundNotes
     } 
     else {
-        # If no notes are found, notify the user
+# If no notes are found, notify the user
         Write-Output "No notes containing the keyword '$Keyword' found."
     }
 } 
