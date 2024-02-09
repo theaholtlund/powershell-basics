@@ -55,3 +55,22 @@ Describe "Remove-Note Function Tests" {
         }
     }
 }
+
+# Describe block for testing Edit-Note function
+Describe "Edit-Note Function Tests" {
+    # Context for testing Edit-Note function
+    Context "Editing a note in the notes array" {
+        It "Should modify the note at the specified index with the new content" {
+            # Arrange
+            $expectedNote = "Test Note"
+            Add-Note -Note $expectedNote
+            $newContent = "Edited Note Content"
+
+            # Act
+            Edit-Note 0
+
+            # Assert
+            $Script:Notes[0] | Should -Be $newContent
+        }
+    }
+}
