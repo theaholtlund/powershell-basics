@@ -8,33 +8,50 @@
 Describe "Add-Note Function Tests" {
     # Context for testing Add-Note function with programmatically added note
     Context "Adding a note programmatically" {
-        It "Should pass when a non-empty note is added programmatically" {
+        It "Should add a note to the notes array when a non-empty note is provided" {
             # Arrange
-            $ExpectedNote = "Test Note"  # Provide a mocked input for the note
+            $expectedNote = "Test Note"
 
             # Act
-            Add-Note -Note $ExpectedNote
+            Add-Note -Note $expectedNote
 
             # Assert
-            $AddedNote = $Script:Notes[-1]  # Get the last added note
-            $AddedNote | Should -Be $ExpectedNote
+            $addedNote = $Script:Notes[-1]
+            $addedNote | Should -Be $expectedNote
         }
     }
 
     # Context for testing Add-Note function with user input
     Context "Adding a note with user input" {
-        It "Should pass when a non-empty note is added via user input" {
+        It "Should add a non-empty note to the notes array when user provides input" {
             # Arrange
-            $mockedInput = "Test Note"  # Provide a mocked input for the note
+            $mockedInput = "User Input Note"
 
             # Act
-            # Mock the Read-Host call to simulate user input
             Mock Read-Host { $mockedInput } -Verifiable
-            Add-Note  # Call Add-Note function, which will prompt the user for input
+            Add-Note
 
             # Assert
-            $AddedNote = $Script:Notes[-1]  # Get the last added note
-            $AddedNote | Should -Be $mockedInput
+            $addedNote = $Script:Notes[-1]
+            $addedNote | Should -Be $mockedInput
+        }
+    }
+}
+
+# Describe block for testing Remove-Note function
+Describe "Remove-Note Function Tests" {
+    # Context for testing Remove-Note function
+    Context "Removing a note from the notes array" {
+        It "Should remove the note at the specified index from the notes array" {
+            # Arrange
+            $expectedNote = "Test Note"
+            Add-Note -Note $expectedNote
+
+            # Act
+            Remove-Note
+
+            # Assert
+            $Script:Notes | Should -NotContain $expectedNote
         }
     }
 }
