@@ -112,3 +112,23 @@ Describe "Search-Notes Function Tests" {
         }
     }
 }
+
+# Describe block for testing Export-Notes function
+Describe "Export-Notes Function Tests" {
+    # Context for testing Export-Notes function
+    Context "Exporting notes to a text file" {
+        It "Should create a text file containing all notes" {
+            # Arrange
+            Add-Note -Note "Test Note 1"
+            Add-Note -Note "Test Note 2"
+            $exportPath = "C:\Temp"
+
+            # Act
+            Export-Notes -Path $exportPath
+
+            # Assert
+            $exportFilePath = Join-Path -Path $exportPath -ChildPath "Notes.txt"
+            Test-Path $exportFilePath | Should -Be $true
+        }
+    }
+}
