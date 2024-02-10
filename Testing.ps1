@@ -74,3 +74,21 @@ Describe "Edit-Note Function Tests" {
         }
     }
 }
+
+# Describe block for testing Clear-Notes function
+Describe "Clear-Notes Function Tests" {
+    # Context for testing Clear-Notes function
+    Context "Clearing all notes from the notes array" {
+        It "Should remove all notes from the notes array" {
+            # Arrange
+            Add-Note -Note "Test Note 1"
+            Add-Note -Note "Test Note 2"
+
+            # Act
+            Clear-Notes
+
+            # Assert
+            $Script:Notes | Should -BeNullOrEmpty
+        }
+    }
+}
