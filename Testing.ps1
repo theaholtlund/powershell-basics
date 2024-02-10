@@ -92,3 +92,23 @@ Describe "Clear-Notes Function Tests" {
         }
     }
 }
+
+# Describe block for testing Search-Notes function
+Describe "Search-Notes Function Tests" {
+    # Context for testing Search-Notes function
+    Context "Searching for notes containing a specific keyword" {
+        It "Should return notes containing the specified keyword" {
+            # Arrange
+            Add-Note -Note "This is a test note"
+            Add-Note -Note "Another test note"
+            $keyword = "test"
+
+            # Act
+            $result = Search-Notes -Keyword $keyword
+
+            # Assert
+            $result | Should -Contain "This is a test note"
+            $result | Should -Contain "Another test note"
+        }
+    }
+}
