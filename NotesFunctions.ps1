@@ -8,6 +8,11 @@ Function Add-Note {
         [String]$Category
     )
 
+    # Check if $Script:NotesCategories is null; if so, initialize it
+    If (-not $Script:NotesCategories) {
+        $Script:NotesCategories = New-Object System.Collections.ArrayList
+    }
+
     $Script:Notes.Add($Note) | Out-Null
     $Script:NotesCategories.Add($Category) | Out-Null
 }
@@ -68,24 +73,15 @@ Function Search-Notes {
     )
 
     # Check if the keyword exists in any notes
-    $foundNotes = $Script:Notes | Where-Object { $_ -match $Keyword }
+    $FoundNotes = $Script:Notes | Where-Object { $_ -match $Keyword }
 
     # If any notes are found, display them
-    If ($foundNotes) {
+    If ($FoundNotes) {
         Write-Output "Notes containing '$Keyword':"
-        $foundNotes
+        $FoundNotes
     } 
     Else {
         # If no notes are found, notify the user
         Write-Output "No notes containing the keyword '$Keyword' found."
     }
 } 
-
-# Function to handle script exit based on user input
-Function Exit-Script {
-    $UserInput = Read-Host "Enter 'exit' to quit"
-    If ($UserInput.ToLower() -eq "exit") {
-        Write-Host "Bye for now, see you again later!" -ForegroundColor Yellow
-        Exit
-    }
-}
