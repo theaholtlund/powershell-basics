@@ -2,16 +2,26 @@
 # Responsible for handling user interactions and integrating imported functions
 
 # Importing functions and tests from other project scripts
-. ".\Functions.ps1"
-. ".\Testing.ps1"
+. ".\Categories.ps1"
+. ".\NotesFunctions.ps1"
 
-# Creating a new instance of ArrayList, allowing users to add and remove elements dynamically
+# Creating a new instance of ArrayList for notes
 $Script:Notes = New-Object System.Collections.ArrayList
+
+# Creating a new instance of ArrayList for categories, allowing for adding and removing elements dynamically
+$Script:Categories = New-Object System.Collections.ArrayList
+
+# Adding example categories
+Add-Category "Work"
+Add-Category "Personal"
 
 # Adding example notes to the array
 Add-Note "This is the first note."
 Add-Note "Learning PowerShell basics."
 Add-Note "This is a cool and important note."
+
+# Displaying all categories
+Show-Categories
 
 # Displaying all notes in the array
 Write-Host "`nWelcome to PowerShell Notes Application!" -ForegroundColor Yellow
@@ -48,6 +58,14 @@ if ($ExportChoice -eq "Y") {
 } else {
     Write-Output "Invalid option. Please choose either 'Y' or 'N'."
 }
+
+# Assigning a note to a category
+$NoteIndexToAssign = Read-Host "Enter the index of the note you want to assign to a category"
+$CategoryIndex = Read-Host "Enter the index of the category you want to assign the note to"
+Assign-Category $NoteIndexToAssign $CategoryIndex
+
+# Displaying notes after assigning a category
+Show-Notes
 
 # Clear notes, though not strictly needed when app does not loop
 Clear-Notes
