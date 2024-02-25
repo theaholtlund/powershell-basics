@@ -4,6 +4,9 @@
 # Import the functions script to be tested
 . ".\Functions.ps1"
 
+# Import required modules
+Import-Module -Name Pester
+
 # Describe block for testing Add-Note function
 Describe "Add-Note Function Tests" {
     # Context for testing Add-Note function with programmatically added note
