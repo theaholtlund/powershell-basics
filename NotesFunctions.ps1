@@ -1,20 +1,21 @@
-# This file contains functions for the PowerShell Notes Application
-# These functions handle note management and interaction with the user
+# This file contains functions for general note management in the PowerShell Notes Application
 
 # Function to add a note to the $Notes ArrayList
 Function Add-Note {
     param (
         [Parameter(Mandatory = $true)]
-        [String]$Note  
+        [String]$Note,
+        [String]$Category
     )
     $Script:Notes.Add($Note) | Out-Null
+    $Script:NotesCategories.Add($Category) | Out-Null
 }
 
 # Function to display all notes in the $Notes ArrayList
 Function Show-Notes {
     Write-Output "Notes:"
     For ($i = 0; $i -lt $Script:Notes.Count; $i++) {
-        Write-Output "$i - $($Script:Notes[$i])"
+        Write-Output "$i - $($Script:Notes[$i]) - Category: $($Script:NotesCategories[$i])"
     }
 }
 
@@ -26,6 +27,7 @@ Function Remove-Note {
     }
     if ($IndexToRemove -ge 0 -and $IndexToRemove -lt $Script:Notes.Count) {
         $Script:Notes.RemoveAt($IndexToRemove)
+        $Script:NotesCategories.RemoveAt($IndexToRemove)
         Write-Output "Note at index $IndexToRemove removed."
     } else {
         Write-Output "Invalid index, note was not removed."
@@ -54,6 +56,7 @@ Function Edit-Note {
 # Function to clear all notes from the $Notes ArrayList
 Function Clear-Notes {
     $Script:Notes.Clear()
+    $Script:NotesCategories.Clear()
     Write-Output "All notes cleared."
 }
 
@@ -64,37 +67,19 @@ Function Search-Notes {
         [String]$Keyword
     )
 
-# Check if the keyword exists in any notes
+    # Check if the keyword exists in any notes
     $foundNotes = $Script:Notes | Where-Object { $_ -match $Keyword }
 
-# If any notes are found, display them
+    # If any notes are found, display them
     if ($foundNotes) {
         Write-Output "Notes containing '$Keyword':"
         $foundNotes
     } 
     else {
-# If no notes are found, notify the user
+        # If no notes are found, notify the user
         Write-Output "No notes containing the keyword '$Keyword' found."
     }
 } 
-
-# Function to export notes to a text file
-# Test-Path to first check if all path elements exist, then if path syntax is correct
-Function Export-Notes {
-    param (
-        [Parameter(Mandatory = $true)]
-        [String]$Path
-    )
-    if (-not (Test-Path -Path $Path -IsValid)) {
-        Write-Host "Invalid path, please provide a valid file path." -ForegroundColor Red
-        return
-    }
-
-    $NotesString = $Script:Notes -join "`r`n"
-    $ExportFilePath = Join-Path -Path $Path -ChildPath "Notes.txt"
-    $NotesString | Out-File -FilePath $ExportFilePath -Encoding utf8
-    Write-Output "Notes were successfully exported to $ExportFilePath."
-}
 
 # Function to handle script exit based on user input
 Function Exit-Script {
