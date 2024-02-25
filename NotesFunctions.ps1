@@ -2,11 +2,12 @@
 
 # Function to add a note to the $Notes ArrayList
 Function Add-Note {
-    param (
+    Param (
         [Parameter(Mandatory = $true)]
         [String]$Note,
         [String]$Category
     )
+
     $Script:Notes.Add($Note) | Out-Null
     $Script:NotesCategories.Add($Category) | Out-Null
 }
@@ -22,33 +23,32 @@ Function Show-Notes {
 # Function to remove a note from the $Notes array based on index
 Function Remove-Note {
     $IndexToRemove = Read-Host "Enter the index of the note you want to remove"
-    if ($IndexToRemove -eq "exit") {
+    If ($IndexToRemove -eq "exit") {
         Exit-Script
-    }
-    if ($IndexToRemove -ge 0 -and $IndexToRemove -lt $Script:Notes.Count) {
+    } If ($IndexToRemove -ge 0 -and $IndexToRemove -lt $Script:Notes.Count) {
         $Script:Notes.RemoveAt($IndexToRemove)
         $Script:NotesCategories.RemoveAt($IndexToRemove)
         Write-Output "Note at index $IndexToRemove removed."
-    } else {
+    } Else {
         Write-Output "Invalid index, note was not removed."
     }
 }
 
 # Function to edit a note in the $Notes ArrayList based on index
 Function Edit-Note {
-    param (
+    Param (
         [Parameter(Mandatory = $true)]
         [int]$Index
     )
 
-    if ($Index -ge 0 -and $Index -lt $Script:Notes.Count) {
+    If ($Index -ge 0 -and $Index -lt $Script:Notes.Count) {
         $NewNote = Read-Host "Enter the new content for the note at index $Index"
-        if ($NewNote -eq "exit") {
+        If ($NewNote -eq "exit") {
             Exit-Script
         }
         $Script:Notes[$Index] = $NewNote
         Write-Output "Note at index $Index edited."
-    } else {
+    } Else {
         Write-Output "Invalid index, note was not edited."
     }
 }
@@ -62,7 +62,7 @@ Function Clear-Notes {
 
 # Function to search notes for a specific keyword
 Function Search-Notes {
-    param (
+    Param (
         [Parameter(Mandatory = $true)]
         [String]$Keyword
     )
@@ -71,11 +71,11 @@ Function Search-Notes {
     $foundNotes = $Script:Notes | Where-Object { $_ -match $Keyword }
 
     # If any notes are found, display them
-    if ($foundNotes) {
+    If ($foundNotes) {
         Write-Output "Notes containing '$Keyword':"
         $foundNotes
     } 
-    else {
+    Else {
         # If no notes are found, notify the user
         Write-Output "No notes containing the keyword '$Keyword' found."
     }
@@ -83,6 +83,9 @@ Function Search-Notes {
 
 # Function to handle script exit based on user input
 Function Exit-Script {
-    Write-Host "Bye for now, see you again later!" -ForegroundColor Yellow
-    exit
+    $UserInput = Read-Host "Enter 'exit' to quit"
+    If ($UserInput.ToLower() -eq "exit") {
+        Write-Host "Bye for now, see you again later!" -ForegroundColor Yellow
+        Exit
+    }
 }
