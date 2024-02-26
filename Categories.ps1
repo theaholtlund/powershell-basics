@@ -18,7 +18,7 @@ Function Show-Categories {
 }
 
 # Function to assign a note to a category
-Function Assign-Category {
+Function Set-Category {
     param (
         [Parameter(Mandatory = $true)]
         [int]$NoteIndex,

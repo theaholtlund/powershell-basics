@@ -80,7 +80,7 @@ Please note that the search is case-sensitive and requires exact match.
             # Assign a category to a note
             $IndexToAssign = Read-Host "Enter the index of the note you want to assign to a category"
             $CategoryIndex = Read-Host "Enter the index of the category you want to assign the note to"
-            Assign-Category $IndexToAssign $CategoryIndex
+            Set-Category $IndexToAssign $CategoryIndex
         }
         8 {
             # Clear all notes
