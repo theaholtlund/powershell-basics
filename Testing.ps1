@@ -1,8 +1,8 @@
-# This file contains tests for functions in Functions.ps1
+# This file contains tests for functions in NotesFunctions.ps1
 # Responsible for ensuring the functionality of functions in the PowerShell Notes Application
 
 # Import the functions script to be tested
-. ".\Functions.ps1"
+. ".\NotesFunctions.ps1"
 
 # Import required modules
 Import-Module -Name Pester
