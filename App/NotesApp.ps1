@@ -2,8 +2,8 @@
 # Responsible for handling user interactions and integrating imported functions
 
 # Importing functions from other scripts
-. ".\Categories.ps1"
-. ".\NotesFunctions.ps1"
+. "$PSScriptRoot\Categories.ps1"
+. "$PSScriptRoot\NotesFunctions.ps1"
 
 # Creating ArrayLists for notes and categories
 $Script:Notes = New-Object System.Collections.ArrayList
@@ -24,7 +24,7 @@ Write-Host "`nWelcome to PowerShell Notes Application!" -ForegroundColor Yellow
 # Menu options
 Do {
     Write-Host "`nChoose an option:"
-    Write-Host "1. View Notes"
+    Write-Host "1. View Notes and Categories"
     Write-Host "2. Add a Note"
     Write-Host "3. Edit a Note"
     Write-Host "4. Remove a Note"
