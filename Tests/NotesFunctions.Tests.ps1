@@ -8,9 +8,10 @@ BeforeAll {
     . $PSScriptRoot/../App/NotesFunctions.ps1
 }
 
+# Test suite for Add-Note function
 Describe "Add-Note Function Tests" {
     BeforeEach {
-        # Initialise $Script:Notes and $Script:NotesCategories arrays before each test
+        # Initialise arrays before each test
         $Script:Notes = @()
         $Script:NotesCategories = @()
     }
@@ -23,9 +24,10 @@ Describe "Add-Note Function Tests" {
     }
 }
 
+# Test suite for Remove-Note function
 Describe "Remove-Note Function Tests" {
     BeforeEach {
-        # Initialise $Script:Notes and $Script:NotesCategories arrays before each test
+        # Initialise arrays before each test
         $Script:Notes = @("Existing Note 1", "Existing Note 2")
         $Script:NotesCategories = @("Category A", "Category B")
     }
@@ -43,9 +45,10 @@ Describe "Remove-Note Function Tests" {
     }
 }
 
+# Test suite for Edit-Note function
 Describe "Edit-Note Function Tests" {
     BeforeEach {
-        # Initialise $Script:Notes and $Script:NotesCategories arrays before each test
+        # Initialise arrays before each test
         $Script:Notes = @("Existing Note 1", "Existing Note 2")
         $Script:NotesCategories = @("Category A", "Category B")
     }
@@ -56,9 +59,10 @@ Describe "Edit-Note Function Tests" {
     }
 }
 
+# Test suite for Clear-Notes function
 Describe "Clear-Notes Function Tests" {
     BeforeEach {
-        # Initialise $Script:Notes and $Script:NotesCategories arrays before each test
+        # Initialise arrays before each test
         $Script:Notes = @("Existing Note 1", "Existing Note 2")
         $Script:NotesCategories = @("Category A", "Category B")
     }
@@ -69,9 +73,10 @@ Describe "Clear-Notes Function Tests" {
     }
 }
 
+# Test suite for Search-Notes function
 Describe "Search-Notes Function Tests" {
     BeforeEach {
-        # Initialise $Script:Notes and $Script:NotesCategories arrays before each test
+        # Initialise arrays before each test
         $Script:Notes = @("Test Note 1", "Test Note 2")
         $Script:NotesCategories = @("Category A", "Category B")
     }
@@ -85,9 +90,10 @@ Describe "Search-Notes Function Tests" {
     }
 }
 
+# Test suite for Export-Notes function
 Describe "Export-Notes Function Tests" {
     BeforeEach {
-        # Initialise $Script:Notes and $Script:NotesCategories arrays before each test
+        # Initialise arrays before each test
         $Script:Notes = @("Test Note 1", "Test Note 2")
         $Script:NotesCategories = @("Category A", "Category B")
     }
