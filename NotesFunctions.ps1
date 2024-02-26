@@ -8,7 +8,7 @@ Function Add-Note {
         [String]$Category
     )
 
-    # Check if $Script:NotesCategories is null; if so, initialize it
+    # Check if $Script:NotesCategories is null; if so, initialise it
     If (-not $Script:NotesCategories) {
         $Script:NotesCategories = New-Object System.Collections.ArrayList
     }

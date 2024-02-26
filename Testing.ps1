@@ -2,6 +2,7 @@
 # Responsible for ensuring the functionality of functions in the PowerShell Notes Application
 
 # Import the functions script to be tested
+. ".\Categories.ps1"
 . ".\NotesFunctions.ps1"
 
 # Import required modules
@@ -12,17 +13,17 @@ Describe "Add-Note Function Tests" {
     Context "Adding a note with a specified category" {
         It "Should add a note with the specified category to the notes and categories arrays" {
             # Arrange
-            $expectedNote = "Test Note"
-            $expectedCategory = "Test Category"
+            $ExpectedNote = "Test Note"
+            $ExpectedCategory = "Test Category"
 
             # Act
-            Add-Note -Note $expectedNote -Category $expectedCategory
+            Add-Notes -Note $ExpectedNote -Category $ExpectedCategory
 
             # Assert
-            $addedNote = $Script:Notes[-1]
-            $addedCategory = $Script:Categories[-1]
-            $addedNote | Should -Be $expectedNote
-            $addedCategory | Should -Be $expectedCategory
+            $AddedNote = $Script:Notes[-1]
+            $AddedCategory = $Script:Categories[-1]
+            $AddedNote | Should -Be $ExpectedNote
+            $AddedCategory | Should -Be $ExpectedCategory
         }
     }
 }
@@ -32,29 +33,29 @@ Describe "Remove-Note Function Tests" {
     Context "Removing a note from the notes array" {
         It "Should remove the note at the specified index from the notes and categories arrays" {
             # Arrange
-            $expectedNote = "Test Note"
-            $expectedCategory = "Test Category"
-            Add-Note -Note $expectedNote -Category $expectedCategory
+            $ExpectedNote = "Test Note"
+            $ExpectedCategory = "Test Category"
+            Add-Note -Note $ExpectedNote -Category $ExpectedCategory
 
             # Act
             Remove-Note
 
             # Assert
-            $Script:Notes | Should -NotContain $expectedNote
-            $Script:Categories | Should -NotContain $expectedCategory
+            $Script:Notes | Should -NotContain $ExpectedNote
+            $Script:Categories | Should -NotContain $ExpectedCategory
         }
 
         It "Should not modify notes or categories arrays when provided with an invalid index" {
             # Arrange
-            $initialNotesCount = $Script:Notes.Count
-            $initialCategoriesCount = $Script:Categories.Count
+            $InitialNotesCount = $Script:Notes.Count
+            $InitialCategoriesCount = $Script:Categories.Count
 
             # Act
             Remove-Note
 
             # Assert
-            $Script:Notes.Count | Should -Be $initialNotesCount
-            $Script:Categories.Count | Should -Be $initialCategoriesCount
+            $Script:Notes.Count | Should -Be $InitialNotesCount
+            $Script:Categories.Count | Should -Be $InitialCategoriesCount
         }
     }
 }
@@ -64,15 +65,15 @@ Describe "Edit-Note Function Tests" {
     Context "Editing a note in the notes array" {
         It "Should modify the note content at the specified index" {
             # Arrange
-            $expectedNote = "Test Note"
-            Add-Note -Note $expectedNote
-            $newContent = "Edited Note Content"
+            $ExpectedNote = "Test Note"
+            Add-Note -Note $ExpectedNote
+            $NewContent = "Edited Note Content"
 
             # Act
             Edit-Note 0
 
             # Assert
-            $Script:Notes[0] | Should -Be $newContent
+            $Script:Notes[0] | Should -Be $NewContent
         }
     }
 }
@@ -102,25 +103,25 @@ Describe "Search-Notes Function Tests" {
             # Arrange
             Add-Note -Note "This is a test note"
             Add-Note -Note "Another test note"
-            $keyword = "test"
+            $Keyword = "test"
 
             # Act
-            $result = Search-Notes -Keyword $keyword
+            $Result = Search-Notes -Keyword $Keyword
 
             # Assert
-            $result | Should -Contain "This is a test note"
-            $result | Should -Contain "Another test note"
+            $Result | Should -Contain "This is a test note"
+            $Result | Should -Contain "Another test note"
         }
 
         It "Should notify the user when no notes containing the keyword are found" {
             # Arrange
-            $keyword = "nonexistent"
+            $Keyword = "nonexistent"
 
             # Act
-            $result = Search-Notes -Keyword $keyword
+            $Result = Search-Notes -Keyword $Keyword
 
             # Assert
-            $result | Should -Contain "No notes containing the keyword '$keyword' found."
+            $Result | Should -Contain "No notes containing the keyword '$Keyword' found."
         }
     }
 }
@@ -132,17 +133,17 @@ Describe "Export-Notes Function Tests" {
             # Arrange
             Add-Note -Note "Test Note 1" -Category "Test Category 1"
             Add-Note -Note "Test Note 2" -Category "Test Category 2"
-            $exportPath = "C:\Temp"
+            $ExportPath = "/Users/theaholtlund/Documents"
 
             # Act
-            Export-Notes -Path $exportPath
+            Export-Notes -Path $ExportPath
 
             # Assert
-            $exportFilePath = Join-Path -Path $exportPath -ChildPath "Notes.txt"
-            Test-Path $exportFilePath | Should -Be $true
-            $exportedContent = Get-Content $exportFilePath
-            $exportedContent | Should -Contain "Test Note 1"
-            $exportedContent | Should -Contain "Test Note 2"
+            $ExportFilePath = Join-Path -Path $ExportPath -ChildPath "Notes.txt"
+            Test-Path $ExportFilePath | Should -Be $True
+            $ExportedContent = Get-Content $ExportFilePath
+            $ExportedContent | Should -Contain "Test Note 1"
+            $ExportedContent | Should -Contain "Test Note 2"
         }
     }
 }
