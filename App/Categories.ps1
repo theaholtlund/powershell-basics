@@ -1,15 +1,15 @@
 # This file contains functions for managing note categories in the PowerShell Notes Application
 
-# Function to initialize the $Script:Categories array
+# Function to initialise the $Script:Categories array if not already initialised
 Function Initialize-Categories {
-    if (-not $Script:Categories) {
+    If (-not $Script:Categories) {
         $Script:Categories = New-Object System.Collections.ArrayList
     }
 }
 
-# Function to add a new category
+# Function to add a new category to the categories array
 Function Add-Category {
-    param (
+    Param (
         [Parameter(Mandatory = $true)]
         [String]$Category
     )
@@ -17,9 +17,9 @@ Function Add-Category {
     $Script:Categories.Add($Category) | Out-Null
 }
 
-# Function to remove a category
+# Function to remove a category from the categories array
 Function Remove-Category {
-    param (
+    Param (
         [Parameter(Mandatory = $true)]
         [String]$Category
     )
@@ -27,9 +27,9 @@ Function Remove-Category {
     $Script:Categories.Remove($Category) | Out-Null
 }
 
-# Function to rename a category
+# Function to rename a category in the categories array
 Function Rename-Category {
-    param (
+    Param (
         [Parameter(Mandatory = $true)]
         [String]$OldCategory,
         [Parameter(Mandatory = $true)]
@@ -37,12 +37,12 @@ Function Rename-Category {
     )
     Initialize-Categories
     $Index = $Script:Categories.IndexOf($OldCategory)
-    if ($Index -ge 0) {
+    If ($Index -ge 0) {
         $Script:Categories[$Index] = $NewCategory
     }
 }
 
-# Function to display all categories
+# Function to display all categories in the categories array
 Function Show-Categories {
     Initialize-Categories
     Write-Output "Categories:"
@@ -53,7 +53,7 @@ Function Show-Categories {
 
 # Function to assign a note to a category
 Function Set-Category {
-    param (
+    Param (
         [Parameter(Mandatory = $true)]
         [int]$NoteIndex,
         [Parameter(Mandatory = $true)]
@@ -62,10 +62,10 @@ Function Set-Category {
 
     Initialize-Categories
 
-    if ($NoteIndex -ge 0 -and $NoteIndex -lt $Script:Notes.Count -and $CategoryIndex -ge 0 -and $CategoryIndex -lt $Script:Categories.Count) {
+    If ($NoteIndex -ge 0 -and $NoteIndex -lt $Script:Notes.Count -and $CategoryIndex -ge 0 -and $CategoryIndex -lt $Script:Categories.Count) {
         $Script:NotesCategories[$NoteIndex] = $Script:Categories[$CategoryIndex]
         Write-Output "Note assigned to category $($Script:Categories[$CategoryIndex])."
-    } else {
+    } Else {
         Write-Output "Invalid note or category index."
     }
 }
