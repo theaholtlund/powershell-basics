@@ -26,7 +26,13 @@ This is a simple PowerShell application to add, remove, display, search, and exp
 
 2. Change into the project directory.
 
-3. Run the script using PowerShell:
+3. Run the tests using PowerShell:
+
+   ```sh
+   Invoke-Pester .\Testing.ps1
+   ```
+
+4. Run the script using PowerShell:
 
    ```sh
    .\NotesApp.ps1
