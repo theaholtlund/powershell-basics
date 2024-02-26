@@ -29,11 +29,11 @@ This is a simple PowerShell application to add, remove, display, search, and exp
 3. Run the tests using PowerShell:
 
    ```sh
-   Invoke-Pester .\Testing.ps1
+   Invoke-Pester .\Tests\Tests.ps1
    ```
 
 4. Run the script using PowerShell:
 
    ```sh
-   .\NotesApp.ps1
+   .\App\NotesApp.ps1
    ```
