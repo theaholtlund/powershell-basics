@@ -67,12 +67,12 @@ Please note that the search is case-sensitive and requires exact match.
         6 {
             # Export notes
             $ExportChoice = Read-Host "Do you want to export the notes? (Y/N)"
-            if ($ExportChoice -eq "Y") {
-                $ExportPath = Read-Host "Enter the path for the exported file:"
+            If ($ExportChoice -eq "Y") {
+                $ExportPath = Read-Host "Enter the path for the exported file"
                 Export-Notes -Path $ExportPath
-            } elseif ($ExportChoice -eq "N") {
+            } ElseIf ($ExportChoice -eq "N") {
                 Write-Output "No export of notes at this time."
-            } else {
+            } Else {
                 Write-Output "Invalid option. Please choose either 'Y' or 'N'."
             }
         }

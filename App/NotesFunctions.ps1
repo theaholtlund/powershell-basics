@@ -8,7 +8,10 @@ Function Add-Note {
         [String]$Category
     )
 
-    # Check if $Script:NotesCategories is null; if so, initialise it
+    # Initialise Notes and NotesCategories if they are null
+    If (-not $Script:Notes) {
+        $Script:Notes = New-Object System.Collections.ArrayList
+    }
     If (-not $Script:NotesCategories) {
         $Script:NotesCategories = New-Object System.Collections.ArrayList
     }
@@ -27,13 +30,15 @@ Function Show-Notes {
 
 # Function to remove a note from the $Notes array based on index
 Function Remove-Note {
-    $IndexToRemove = Read-Host "Enter the index of the note you want to remove"
-    If ($IndexToRemove -eq "exit") {
-        Exit-Script
-    } If ($IndexToRemove -ge 0 -and $IndexToRemove -lt $Script:Notes.Count) {
-        $Script:Notes.RemoveAt($IndexToRemove)
-        $Script:NotesCategories.RemoveAt($IndexToRemove)
-        Write-Output "Note at index $IndexToRemove removed."
+    Param (
+        [Parameter(Mandatory = $true)]
+        [int]$Index
+    )
+
+    If ($Index -ge 0 -and $Index -lt $Script:Notes.Count) {
+        $Script:Notes.RemoveAt($Index)
+        $Script:NotesCategories.RemoveAt($Index)
+        Write-Output "Note at index $Index removed."
     } Else {
         Write-Output "Invalid index, note was not removed."
     }
@@ -48,9 +53,6 @@ Function Edit-Note {
 
     If ($Index -ge 0 -and $Index -lt $Script:Notes.Count) {
         $NewNote = Read-Host "Enter the new content for the note at index $Index"
-        If ($NewNote -eq "exit") {
-            Exit-Script
-        }
         $Script:Notes[$Index] = $NewNote
         Write-Output "Note at index $Index edited."
     } Else {
@@ -75,13 +77,23 @@ Function Search-Notes {
     # Check if the keyword exists in any notes
     $FoundNotes = $Script:Notes | Where-Object { $_ -match $Keyword }
 
-    # If any notes are found, display them
-    If ($FoundNotes) {
-        Write-Output "Notes containing '$Keyword':"
-        $FoundNotes
-    } 
-    Else {
-        # If no notes are found, notify the user
-        Write-Output "No notes containing the keyword '$Keyword' found."
+    # Return the found notes
+    $FoundNotes
+}
+
+# Function to export notes to a text file
+Function Export-Notes {
+    param (
+        [Parameter(Mandatory = $true)]
+        [String]$Path
+    )
+    If (-not (Test-Path -Path $Path -IsValid)) {
+        Write-Host "Invalid path, please provide a valid file path." -ForegroundColor Red
+        return
     }
-} 
+
+    $NotesString = $Script:Notes -join "`r`n"
+    $ExportFilePath = Join-Path -Path $Path -ChildPath "Notes.txt"
+    $NotesString | Out-File -FilePath $ExportFilePath -Encoding utf8
+    Write-Output "Notes were successfully exported to $ExportFilePath."
+}
