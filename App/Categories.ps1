@@ -1,9 +1,9 @@
 # This file contains functions for managing note categories in the PowerShell Notes Application
 
-# Function to initialise the $Script:Categories array if not already initialised
+# Function to initialise array if not already initialised
 Function Initialize-Categories {
     If (-not $Script:Categories) {
-        $Script:Categories = New-Object System.Collections.ArrayList
+        $Script:Categories = @()
     }
 }
 
@@ -14,7 +14,7 @@ Function Add-Category {
         [String]$Category
     )
     Initialize-Categories
-    $Script:Categories.Add($Category) | Out-Null
+    $Script:Categories += $Category
 }
 
 # Function to remove a category from the categories array
@@ -24,7 +24,7 @@ Function Remove-Category {
         [String]$Category
     )
     Initialize-Categories
-    $Script:Categories.Remove($Category) | Out-Null
+    $Script:Categories = $Script:Categories | Where-Object { $_ -ne $Category }
 }
 
 # Function to rename a category in the categories array
