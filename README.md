@@ -20,19 +20,25 @@ This is a simple PowerShell application to add, remove, display, search, and exp
 - PowerShell installed on the system.
 - Pester module installed for testing.
 
-### Executing program
+### Executing program and tests
 
 1. Clone the repository.
 
 2. Change into the project directory.
 
-3. Run the tests using PowerShell:
+3. Run the categories tests using PowerShell:
 
    ```sh
-   Invoke-Pester .\Tests\Tests.ps1
+   .\Tests\Categories.Tests.ps1
    ```
 
-4. Run the script using PowerShell:
+4. Run the other functions tests using PowerShell:
+
+   ```sh
+   .\Tests\NotesFunctions.Tests.ps1
+   ```
+
+5. Run the script using PowerShell:
 
    ```sh
    .\App\NotesApp.ps1
