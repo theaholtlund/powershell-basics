@@ -38,6 +38,27 @@ Describe "Edit-Note Function Tests" {
     }
 }
 
+# Test suite for Remove-Note function
+Describe "Remove-Note Function Tests" {
+    BeforeEach {
+        # Initialise arrays before each test
+        $Script:Notes = @("Existing Note 1", "Existing Note 2")
+        $Script:NotesCategories = @("Category A", "Category B")
+    }
+
+    It "Removing a note from the notes array should remove the note and its category from the arrays" {
+        $Index = 0
+        Remove-Note -Index $Index
+        $Script:Notes -notcontains "Existing Note 1" -and $Script:NotesCategories -notcontains "Category A"
+    }
+
+    It "Attempting to remove a note with an invalid index should not modify the notes or categories arrays" {
+        $Index = -1
+        Remove-Note -Index $Index
+        $Script:Notes.Count -eq 2 -and $Script:NotesCategories.Count -eq 2
+    }
+}
+
 # Test suite for Clear-Notes function
 Describe "Clear-Notes Function Tests" {
     BeforeEach {
