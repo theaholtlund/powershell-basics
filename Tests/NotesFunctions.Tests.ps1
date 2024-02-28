@@ -94,3 +94,26 @@ Describe "Search-Notes Function Tests" {
         $FoundNotes -eq $NotFoundMessage
     }
 }
+
+# Test suite for Export-Notes function
+Describe "Export-Notes Function Tests" {
+    BeforeEach {
+        # Initialise arrays before each test
+        $Script:Notes = @("Test Note 1", "Test Note 2")
+        $Script:NotesCategories = @("Category A", "Category B")
+    }
+
+    It "Exporting notes to a valid file path should create a file with all notes content" {
+        $ExportPath = "$env:TEMP"
+        Export-Notes -Path $ExportPath
+        $ExportedNotes = Get-Content -Path "$ExportPath\Notes.txt"
+        $ExportedNotes -eq "Test Note 1`r`nTest Note 2"
+    }
+
+    It "Attempting to export notes to an invalid file path should display an error message" {
+        $InvalidPath = "C:\Invalid\Path"
+        $ErrorMessage = "Invalid path, please provide a valid file path."
+        Export-Notes -Path $InvalidPath | Should -BeNullOrEmpty
+        $ErrorMessage -eq (Write-Host "Invalid path, please provide a valid file path." -ForegroundColor Red)
+    }
+}
