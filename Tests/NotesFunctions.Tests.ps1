@@ -104,7 +104,7 @@ Describe "Export-Notes Function Tests" {
     }
 
     It "Exporting notes to a valid file path should create a file with all notes content" {
-        $ExportPath = "$env:TEMP"
+        $ExportPath = "/Users/theaholtlund"
         Export-Notes -Path $ExportPath
         $ExportedNotes = Get-Content -Path "$ExportPath\Notes.txt"
         $ExportedNotes -eq "Test Note 1`r`nTest Note 2"
