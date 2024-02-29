@@ -42,22 +42,26 @@ Describe "Edit-Note Function Tests" {
 Describe "Remove-Note Function Tests" {
     BeforeEach {
         # Initialise arrays before each test
-        $Script:Notes = @("Existing Note 1", "Existing Note 2")
-        $Script:NotesCategories = @("Category A", "Category B")
+        $Script:Notes = New-Object System.Collections.ArrayList
+        $Script:Notes.AddRange(("Existing Note 1", "Existing Note 2"))
+        
+        $Script:NotesCategories = New-Object System.Collections.ArrayList
+        $Script:NotesCategories.AddRange(("Category A", "Category B"))
     }
 
     It "Removing a note from the notes array should remove the note and its category from the arrays" {
         $Index = 0
         Remove-Note -Index $Index
-        $Script:Notes -notcontains "Existing Note 1" -and $Script:NotesCategories -notcontains "Category A"
+        ($Script:Notes -notcontains "Existing Note 1") -and ($Script:NotesCategories -notcontains "Category A")
     }
 
     It "Attempting to remove a note with an invalid index should not modify the notes or categories arrays" {
         $Index = -1
         Remove-Note -Index $Index
-        $Script:Notes.Count -eq 2 -and $Script:NotesCategories.Count -eq 2
+        ($Script:Notes.Count -eq 2) -and ($Script:NotesCategories.Count -eq 2)
     }
 }
+
 
 # Test suite for Clear-Notes function
 Describe "Clear-Notes Function Tests" {
@@ -112,8 +116,6 @@ Describe "Export-Notes Function Tests" {
 
     It "Attempting to export notes to an invalid file path should display an error message" {
         $InvalidPath = "C:\Invalid\Path"
-        $ErrorMessage = "Invalid path, please provide a valid file path."
         Export-Notes -Path $InvalidPath | Should -BeNullOrEmpty
-        $ErrorMessage -eq (Write-Host "Invalid path, please provide a valid file path." -ForegroundColor Red)
     }
 }
