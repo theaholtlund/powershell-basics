@@ -6,12 +6,13 @@ This is a simple PowerShell application to add, remove, display, search, and exp
 
 ## Main Features
 
-- **Add Notes**: Easily add new notes to the collection.
-- **Display Notes**: View all notes in one place.
-- **Remove Notes**: Remove specific notes by index.
-- **Clear Notes**: Clear all notes from the collection at once.
-- **Search Notes**: Search for specific keywords within all the notes.
-- **Export Notes**: Export notes to a text file.
+- **Add Notes**: Easily add new notes along with their categories.
+- **Display Notes**: View all notes with their respective categories.
+- **Edit Notes**: Modify the content of existing notes.
+- **Remove Notes**: Delete specific notes from the collection.
+- **Search Notes**: Find notes containing specific keywords.
+- **Assign Categories**: Associate categories with individual notes.
+- **Export Notes**: Save notes to a text file for external use.
 
 ## Getting Started
 
