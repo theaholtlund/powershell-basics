@@ -11,11 +11,11 @@ $Age = Read-Host "How old are you?"
 
 # Print message based on age of user, using comparison operators
 # Operator -le stands for "less than", and -ge stands for "greater than or equal to"
-if ($Age -lt 18) {
+If ($Age -lt 18) {
     Write-Host "You are a minor."
-} elseif ($Age -ge 18 -and $Age -lt 65) {
+} ElseIf ($Age -ge 18 -and $Age -lt 65) {
     Write-Host "You are an adult."
-} else {
+} Else {
     Write-Host "You are a senior citizen."
 }
 
@@ -35,18 +35,18 @@ Write-Host "The current date and time is: $CurrentDateTime"
 # -PathType Container specifies that the code is checking for a directory
 $DirectoryPath = ".\NewDirectory"
 
-if (-not (Test-Path -Path $DirectoryPath -PathType Container)) {
+If (-not (Test-Path -Path $DirectoryPath -PathType Container)) {
     New-Item -ItemType Directory -Path $DirectoryPath
     Write-Host "Directory '$DirectoryPath' created."
-} else {
+} Else {
     Write-Host "Directory '$DirectoryPath' already exists."
 }
 
 # Check if a file exists in the newly created directory
 $FilePath = ".\NewDirectory\test.txt"
-if (Test-Path $FilePath) {
+If (Test-Path $FilePath) {
     Write-Host "The file $FilePath exists."
-} else {
+} Else {
     Write-Host "The file $FilePath does not exist."
 }
 
