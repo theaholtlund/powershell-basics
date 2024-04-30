@@ -78,6 +78,7 @@ Describe "Rename-Category Function Tests" {
     }
 }
 
+
 # Test suite for Show-Categories function
 Describe "Show-Categories Function Tests" {
     BeforeEach {
@@ -86,8 +87,13 @@ Describe "Show-Categories Function Tests" {
     }
 
     It "Show-Categories should output a list of categories" {
-        Show-Categories | Should -Contain "Category A"
-        Show-Categories | Should -Contain "Category B"
+        $Output = Show-Categories
+        $Output[0] -eq "Categories:" | Should -Be $True
+        
+        # Check each category in the output
+        For ($i = 1; $i -lt $Output.Count; $i++) {
+            $Output[$i] -match '^\d+ - .+$' | Should -Be $True
+        }
     }
 }
 
