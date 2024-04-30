@@ -8,21 +8,21 @@ BeforeAll {
     . $PSScriptRoot/../App/Categories.ps1
 }
 
-# Test suite for Initialise-Categories function
-Describe "Initialise-Categories Function Tests" {
+# Test suite for Set-Categories function
+Describe "Set-Categories Function Tests" {
     BeforeEach {
         # Clear $Script:Categories array before each test
         $Script:Categories = $null
     }
 
-    It "Initialise-Categories should create an empty categories array if it's not already initialised" {
-        Initialise-Categories
+    It "Set-Categories should create an empty categories array if it's not already initialised" {
+        Set-Categories
         $Script:Categories -notcontains $null
     }
 
-    It "Initialise-Categories should not modify the categories array if it's already initialised" {
+    It "Set-Categories should not modify the categories array if it's already initialised" {
         $Script:Categories = @("Category A", "Category B")
-        Initialise-Categories
+        Set-Categories
         $Script:Categories.Count -eq 2
     }
 }

@@ -1,7 +1,7 @@
 # This file contains functions for managing note categories in the PowerShell Notes Application
 
-# Function to initialise array if not already initialised
-Function Initialise-Categories {
+# Function to set array if not already initialised
+Function Set-Categories {
     If (-not $Script:Categories) {
         $Script:Categories = @()
     }
@@ -13,7 +13,7 @@ Function Add-Category {
         [Parameter(Mandatory = $True)]
         [String]$Category
     )
-    Initialise-Categories
+    Set-Categories
     $Script:Categories += $Category
 }
 
@@ -23,7 +23,7 @@ Function Remove-Category {
         [Parameter(Mandatory = $True)]
         [String]$Category
     )
-    Initialise-Categories
+    Set-Categories
     $Script:Categories = $Script:Categories | Where-Object { $_ -ne $Category }
 }
 
@@ -35,7 +35,7 @@ Function Rename-Category {
         [Parameter(Mandatory = $True)]
         [String]$NewCategory
     )
-    Initialise-Categories
+    Set-Categories
     $Index = $Script:Categories.IndexOf($OldCategory)
     If ($Index -ge 0) {
         $Script:Categories[$Index] = $NewCategory
@@ -44,7 +44,7 @@ Function Rename-Category {
 
 # Function to display all categories in the categories array
 Function Show-Categories {
-    Initialise-Categories
+    Set-Categories
     Write-Output "Categories:"
     For ($i = 0; $i -lt $Script:Categories.Count; $i++) {
         Write-Output "$i - $($Script:Categories[$i])"
@@ -60,7 +60,7 @@ Function Set-Category {
         [int]$CategoryIndex
     )
 
-    Initialise-Categories
+    Set-Categories
 
     If ($NoteIndex -ge 0 -and $NoteIndex -lt $Script:Notes.Count -and $CategoryIndex -ge 0 -and $CategoryIndex -lt $Script:Categories.Count) {
         $Script:NotesCategories[$NoteIndex] = $Script:Categories[$CategoryIndex]
