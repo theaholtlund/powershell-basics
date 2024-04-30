@@ -36,8 +36,7 @@ Describe "Add-Category Function Tests" {
 
     It "Adding a category should add the category to the categories array" {
         Add-Category "TestCategory"
-        $Categories = $Script:Categories
-        $Categories[-1] -eq "TestCategory"
+        $Script:Categories[-1] -eq "TestCategory"
     }
 }
 
@@ -84,12 +83,11 @@ Describe "Show-Categories Function Tests" {
     BeforeEach {
         # Clear $Script:Categories array before each test
         $Script:Categories = @("Category A", "Category B")
-        $Output = $null
     }
 
     It "Show-Categories should output a list of categories" {
-        $Output = Show-Categories
-        $Output -contains "Category A" -and $Output -contains "Category B"
+        Show-Categories | Should -Contain "Category A"
+        Show-Categories | Should -Contain "Category B"
     }
 }
 
