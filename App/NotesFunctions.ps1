@@ -3,7 +3,7 @@
 # Function to add a note to the $Notes ArrayList
 Function Add-Note {
     Param (
-        [Parameter(Mandatory = $true)]
+        [Parameter(Mandatory = $True)]
         [String]$Note,
         [String]$Category
     )
@@ -31,8 +31,8 @@ Function Show-Notes {
 # Function to remove a note from the $Notes array based on index
 Function Remove-Note {
     Param (
-        [Parameter(Mandatory = $true)]
-        [int]$Index
+        [Parameter(Mandatory = $True)]
+        [Int]$Index
     )
 
     If ($Index -ge 0 -and $Index -lt $Script:Notes.Count) {
@@ -47,8 +47,8 @@ Function Remove-Note {
 # Function to edit a note in the $Notes ArrayList based on index
 Function Edit-Note {
     Param (
-        [Parameter(Mandatory = $true)]
-        [int]$Index
+        [Parameter(Mandatory = $True)]
+        [Int]$Index
     )
 
     If ($Index -ge 0 -and $Index -lt $Script:Notes.Count) {
@@ -70,7 +70,7 @@ Function Clear-Notes {
 # Function to search notes for a specific keyword
 Function Search-Notes {
     Param (
-        [Parameter(Mandatory = $true)]
+        [Parameter(Mandatory = $True)]
         [String]$Keyword
     )
 
@@ -83,13 +83,13 @@ Function Search-Notes {
 
 # Function to export notes to a text file
 Function Export-Notes {
-    param (
-        [Parameter(Mandatory = $true)]
+    Param (
+        [Parameter(Mandatory = $True)]
         [String]$Path
     )
     If (-not (Test-Path -Path $Path -IsValid)) {
         Write-Host "Invalid path, please provide a valid file path." -ForegroundColor Red
-        return
+        Return
     }
 
     $NotesString = $Script:Notes -join "`r`n"
