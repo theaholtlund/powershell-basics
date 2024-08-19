@@ -5,7 +5,7 @@ Import-Module -Name Pester
 
 # Import the code file containing the functions to test
 BeforeAll {
-    . $PSScriptRoot/../App/NotesFunctions.ps1
+    . $PSScriptRoot/../NotesFunctions.ps1
 }
 
 # Test suite for Add-Note function

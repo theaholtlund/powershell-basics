@@ -30,13 +30,13 @@ This is a simple PowerShell application to add, remove, display, search, and exp
 3. Run the categories tests using PowerShell:
 
    ```sh
-   .\Tests\Categories.Tests.ps1
+   .\App\Tests\Categories.Tests.ps1
    ```
 
 4. Run the other functions tests using PowerShell:
 
    ```sh
-   .\Tests\NotesFunctions.Tests.ps1
+   .\App\Tests\NotesFunctions.Tests.ps1
    ```
 
 5. Run the script using PowerShell:

@@ -5,7 +5,7 @@ Import-Module -Name Pester
 
 # Import the code file containing the functions to test
 BeforeAll {
-    . $PSScriptRoot/../App/Categories.ps1
+    . $PSScriptRoot/../Categories.ps1
 }
 
 # Test suite for Set-Categories function
