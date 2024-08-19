@@ -58,10 +58,7 @@ Do {
         }
         5 {
             # Search notes
-            $Keyword = Read-Host @"
-Enter keyword to search for.
-Please note that the search is case-sensitive and requires exact match.
-"@
+            $Keyword = Read-Host "Enter search keyword. The search is case-sensitive and requires exact match."
             Search-Notes $Keyword
         }
         6 {
@@ -95,4 +92,4 @@ Please note that the search is case-sensitive and requires exact match.
             Write-Host "Invalid choice. Please enter a number from 1 to 9."
         }
     }
-} While ($true)
+} While ($True)
