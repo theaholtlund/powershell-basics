@@ -9,14 +9,27 @@ $ParentDirectory = Split-Path -Parent $ScriptDirectory
 # Define the output folder path
 $OutputFolder = Join-Path -Path $ParentDirectory -ChildPath "OutputFiles"
 
-# Define the output file path in the output folder
+# Define the output file path for e-mails in the output folder
+$EmailsFilePath = Join-Path -Path $OutputFolder -ChildPath "Emails.txt"
+
+# Define the output file path for system report in the output folder
 $OutputFile = Join-Path -Path $OutputFolder -ChildPath "SystemReport.html"
 
 # Get macOS version
-$OSVersion = sw_vers -productVersion
+$OSVersion = sw_vers -ProductVersion
 
 # Get the hostname
-$HostName = hostname
+$HostName = Hostname
+
+# Export strings to file
+@"
+Johnathan.Doe@adatum.com
+Jane.Smith@contoso.com
+Ola.Nordmann@something.no
+"@ | Out-File -FilePath $EmailsFilePath
+
+# Look at the content that was exported
+Get-Content -Path $EmailsFilePath
 
 # Create HTML report
 $HTMLContent = @"
