@@ -1,3 +1,5 @@
+# Working with reports and formatting
+
 # Define output path in the same directory as the script
 $OutputFile = Join-Path -Path $PSScriptRoot -ChildPath "SystemReport.html"
 
