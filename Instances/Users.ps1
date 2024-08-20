@@ -1,4 +1,4 @@
-# Working with users
+# Working with users, only works on Windows
 
 # Retrieve current user identity
 $CurrentUser = [System.Security.Principal.WindowsIdentity]::GetCurrent()
