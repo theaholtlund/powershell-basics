@@ -1,4 +1,3 @@
 .DS_Store
-Download.jpg
-SystemReport.html
-TopMemoryUse.xlsx
+OutputFiles/*
+!OutputFiles/README.md
