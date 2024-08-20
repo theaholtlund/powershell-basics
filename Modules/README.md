@@ -2,15 +2,15 @@
 
 ## Overview
 
-This folder contains files used to explore converting functions into modules, using a `Convert-Temperature` function to convert temperatures from Celsius to Fahrenheit.
+This folder contains files used to explore converting functions into modules, using a files for conversion, such as distance and temperature.
 
 ## Creating the Module
 
 ### 1. Create the Manifest
 
-- `New-ModuleManifest -Path .\TemperatureConversion.psd1 -RootModule TemperatureConversion.psm1 -Author "Your Name" -Description "Converts temperatures between Celsius and Fahrenheit"`
+- `New-ModuleManifest -Path .\Path\To\Modules\Folder -RootModule YourScriptModuleFile.psm1 -Author "Your Name" -Description "Functionality description of your module"`
 
-### 2. Import and Test Module
+### 2. Example Import and Test For Module
 
 - `Import-Module .\TemperatureConversion.psm1`
 - `Test-ModuleManifest .\TemperatureConversion.psd1`
