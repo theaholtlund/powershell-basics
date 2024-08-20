@@ -1,7 +1,16 @@
 # Working with reports and formatting
 
-# Define output path in the same directory as the script
-$OutputFile = Join-Path -Path $PSScriptRoot -ChildPath "SystemReport.html"
+# Get the directory where the script is located
+$ScriptDirectory = Split-Path -Parent $MyInvocation.MyCommand.Path
+
+# Define the parent directory (one level up from the script's directory)
+$ParentDirectory = Split-Path -Parent $ScriptDirectory
+
+# Define the output folder path
+$OutputFolder = Join-Path -Path $ParentDirectory -ChildPath "OutputFiles"
+
+# Define the output file path in the output folder
+$OutputFile = Join-Path -Path $OutputFolder -ChildPath "SystemReport.html"
 
 # Get macOS version
 $OSVersion = sw_vers -productVersion
