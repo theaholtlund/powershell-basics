@@ -1,7 +1,7 @@
 # Working with file processing
 
 # Define output path in the same directory as the script
-$OutputPath = Join-Path -Path $PSScriptRoot -ChildPath 'download.jpg'
+$OutputPath = Join-Path -Path $PSScriptRoot -ChildPath 'Download.jpg'
 
 # Create a new WebClient instance
 $WebClient = New-Object System.Net.WebClient
