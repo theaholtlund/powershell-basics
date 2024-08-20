@@ -7,9 +7,5 @@ $OutputPath = Join-Path -Path $PSScriptRoot -ChildPath 'download.jpg'
 $WebClient = New-Object System.Net.WebClient
 $WebClient.DownloadFile('https://www.graydaycafe.com/images/bg.jpg', $OutputPath)
 
-
-
-
-
-
-# (new-object System.Net.WebClient).DownloadFile('https://www.graydaycafe.com/images/bg.jpg', 'bg.jpg')
+# The above code as one line
+(New-Object System.Net.WebClient).DownloadFile('https://www.graydaycafe.com/images/bg.jpg', $OutputPath)
