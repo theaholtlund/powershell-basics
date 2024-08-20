@@ -1,5 +1,5 @@
-# Define the output file path
-$OutputFile = "SystemReport.html"
+# Define output path in the same directory as the script
+$OutputFile = Join-Path -Path $PSScriptRoot -ChildPath "SystemReport.html"
 
 # Get macOS version
 $OSVersion = sw_vers -productVersion
