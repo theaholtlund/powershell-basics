@@ -5,8 +5,8 @@
 . "$PSScriptRoot\NotesFunctions.ps1"
 
 # Creating ArrayLists for notes and categories
-$Script:Notes = New-Object System.Collections.ArrayList
-$Script:Categories = New-Object System.Collections.ArrayList
+$Script:Notes = [System.Collections.ArrayList]::New()
+$Script:Categories = [System.Collections.ArrayList]::New()
 
 # Adding example categories
 Add-Category "Work"
