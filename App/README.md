@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple PowerShell application to add, remove, display, search, and export notes added by a user. It was created to cover basic functionality and developed as a step in learning introductory PowerShell. There is also a directory called `CmdletPractice`, which only contains simple notes and basic syntax, created for reference and not for functionality.
+A simple PowerShell application to add, remove, display, search and export notes added by a user. Covers basic functionality, developed as a step in learning introductory PowerShell.
 
 ## Main Features
 
@@ -19,27 +19,23 @@ This is a simple PowerShell application to add, remove, display, search, and exp
 ### Prerequisites
 
 - PowerShell installed on the system.
-- Pester module installed for testing.
+- Pester module installed for unit testing.
 
 ### Executing program and tests
 
-1. Clone the repository.
-
-2. Change into the project directory.
-
-3. Run the categories tests using PowerShell:
+1. Run the categories tests using PowerShell:
 
    ```sh
    .\App\Tests\Categories.Tests.ps1
    ```
 
-4. Run the other functions tests using PowerShell:
+2. Run the other functions tests using PowerShell:
 
    ```sh
    .\App\Tests\NotesFunctions.Tests.ps1
    ```
 
-5. Run the script using PowerShell:
+3. Run the script using PowerShell:
 
    ```sh
    .\App\NotesApp.ps1
