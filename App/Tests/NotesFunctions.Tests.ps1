@@ -1,4 +1,4 @@
-# This file contains tests for functions in NotesFunctions.ps1
+# Tests for functions in NotesFunctions.ps1
 
 # Import required modules
 Import-Module -Name Pester

@@ -1,4 +1,4 @@
-# Introduction to cmdlets in PowerShell, file is just for testing and learning
+# Introduction to cmdlets in PowerShell
 
 # Write out to the shell, ask the user for their name
 $Name = Read-Host "What is your name?"
@@ -10,7 +10,6 @@ Write-Host "Hello, $Name! Welcome to the PowerShell world." -ForegroundColor Dar
 $Age = Read-Host "How old are you?"
 
 # Print message based on age of user, using comparison operators
-# Operator -le stands for "less than", and -ge stands for "greater than or equal to"
 If ($Age -lt 18) {
     Write-Host "You are a minor."
 } ElseIf ($Age -ge 18 -and $Age -lt 65) {

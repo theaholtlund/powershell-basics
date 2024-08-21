@@ -1,5 +1,4 @@
-# This file is the main entry point for the PowerShell Notes Application
-# Responsible for handling user interactions and integrating imported functions
+# Main entry point for the notes app
 
 # Importing functions from other scripts
 . "$PSScriptRoot\Categories.ps1"

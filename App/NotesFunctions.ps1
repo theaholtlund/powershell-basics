@@ -1,4 +1,4 @@
-# This file contains functions for general note management in the PowerShell Notes Application
+# Functions for general note management in the notes app
 
 # Function to add a note to the $Notes ArrayList
 Function Add-Note {

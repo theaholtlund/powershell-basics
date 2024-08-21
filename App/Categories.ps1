@@ -1,4 +1,4 @@
-# This file contains functions for managing note categories in the PowerShell Notes Application
+# Functions for managing note categories in the notes app
 
 # Function to set array if not already initialised
 Function Set-Categories {
