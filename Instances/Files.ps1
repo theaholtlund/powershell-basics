@@ -23,6 +23,10 @@ $WebClient.DownloadFile('https://www.graydaycafe.com/images/bg.jpg', $OutputFile
 If (Test-Path $OutputFile) {
     Write-Host "The file has been downloaded successfully."
 
+    # Get the file size
+    $FileSize = (Get-Item $OutputFile).Length
+    Write-Host "The file size is $($FileSize / 1KB) KB." 
+
 } Else {
     Write-Host "Download failed or file does not exist."
 }
