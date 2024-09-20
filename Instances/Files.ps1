@@ -18,3 +18,11 @@ $WebClient.DownloadFile('https://www.graydaycafe.com/images/bg.jpg', $OutputFile
 
 # The above code as one line
 (New-Object System.Net.WebClient).DownloadFile('https://www.graydaycafe.com/images/bg.jpg', $OutputFile)
+
+# Check if the file exists
+If (Test-Path $OutputFile) {
+    Write-Host "The file has been downloaded successfully."
+
+} Else {
+    Write-Host "Download failed or file does not exist."
+}
