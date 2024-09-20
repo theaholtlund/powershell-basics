@@ -16,12 +16,10 @@ If ($PostalCodeResult.valid) {
     Write-Host -F Darkred "Invalid postal code $PostalCode."
 }
 
-# MET.no locationforecast API to get weather data
-# Add in latitude and longitude for Gardermoen, Norway
+# MET.no location forecast API to get weather data
+# Add the latitude and longitude for Gardermoen, Norway
 $Latitude = '60.1939'
 $Longitude = '11.1004'
-
-# Construct the URI for the locationforecast API
 $MetURI = "https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=$Latitude&lon=$Longitude"
 
 # Make the web request to get weather data
