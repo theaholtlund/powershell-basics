@@ -25,7 +25,15 @@ If (Test-Path $OutputFile) {
 
     # Get the file size
     $FileSize = (Get-Item $OutputFile).Length
-    Write-Host "The file size is $($FileSize / 1KB) KB." 
+    Write-Host "The file size is $($FileSize / 1KB) KB."
+
+    # Get the file creation time
+    $CreationTime = (Get-Item $OutputFile).CreationTime
+    Write-Host "The file was created on $CreationTime."
+
+    # Get the last write time
+    $LastWriteTime = (Get-Item $OutputFile).LastWriteTime
+    Write-Host "The file was last modified on $LastWriteTime."
 
 } Else {
     Write-Host "Download failed or file does not exist."
