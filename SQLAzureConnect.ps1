@@ -21,18 +21,22 @@ $ConnectionString = "Server=$ServerName;Database=$DatabaseName;User ID=$Username
 # Use the .NET SqlClient to query
 Add-Type -AssemblyName "System.Data"
 
+# Create and open a new SQL Server connection
 $Connection = New-Object System.Data.SqlClient.SqlConnection
 $Connection.ConnectionString = $ConnectionString
 $Connection.Open()
 
+# Prepare command to retrieve the top 10 rows from the system tables metadata
 $Command = $Connection.CreateCommand()
 $Command.CommandText = "SELECT TOP 10 * FROM sys.tables"
 
+# Execute the query and read each result row, printing the table name column
 $Reader = $Command.ExecuteReader()
 
 While ($Reader.Read()) {
     Write-Output $Reader["Name"]
 }
 
+# Close the reader and the database connection
 $Reader.Close()
 $Connection.Close()
