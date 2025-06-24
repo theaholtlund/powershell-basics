@@ -38,6 +38,7 @@ Write-Output "Importing required modules..."
 Import-Module Az.Accounts, Az.Sql, Az.Resources -ErrorAction Stop
 Import-Module SqlServer -ErrorAction Stop
 
+Try {
 # Azure login using Service Principal
 $Script:SecurePassword = ConvertTo-SecureString $Script:ServiceUser -AsPlainText -Force
 $Script:Credential = New-Object System.Management.Automation.PSCredential ($Script:ClientID, $SecurePassword)
@@ -61,3 +62,20 @@ Encrypt=True;
 TrustServerCertificate=False;
 "@
 
+# Create user in the specified database
+$CreateUserQuery = @"
+CREATE USER [$ServicePrincipalName] FROM EXTERNAL PROVIDER;
+ALTER ROLE db_owner ADD MEMBER [$ServicePrincipalName];
+"@
+
+Write-Output "Creating AAD user '$ServicePrincipalName' with db_owner role in database '$DatabaseName'..."
+
+Invoke-Sqlcmd -ConnectionString $ConnectionString -Query $CreateUserQuery -ErrorAction Stop
+
+Write-Output "User '$ServicePrincipalName' created with db_owner role."
+}
+
+Catch {
+    Write-Error "Failed to create user: $($_.Exception.Message)"
+    Exit 1
+}
