@@ -1,4 +1,4 @@
-.sqlconfig
+.*config
 .DS_Store
 OutputFiles/*
 !OutputFiles/README.md
